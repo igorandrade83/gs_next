@@ -1,0 +1,12 @@
+{
+  "name": "io.cronapp.apps.getstarted",
+  "displayName": "Get_Started",
+  "version": "1.0.0",
+  "description": "Get_Started",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "CronApp IDE",
+  "license": "Apache-2.0"
+}
