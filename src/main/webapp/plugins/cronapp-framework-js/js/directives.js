@@ -504,7 +504,7 @@
         };
 
         scope.$watch(function(){return ngModel.$modelValue}, function(value, old){
-          if (value !== old) {
+          if (value !== old || value !== scope.TEXT) {
             scope.text = ngModel.$modelValue;
             scope.TEXT = getText();
             scope.INPUT_MODE = getInputMode(scope.TEXT);
@@ -550,6 +550,29 @@
         }
       } else {
         return "";
+      }
+    }
+  })
+
+  .filter('js',function($translate) {
+    return function(o) {
+      if (o != null && o !== undefined) {
+        if (typeof o == 'number' || typeof o == 'boolean') {
+          return o + "";
+        }
+        if (o instanceof Date) {
+          return cronapi.toDate(o.toISOString());
+        }
+        else {
+          if (o.length >= 10 && o.match(ISO_PATTERN)) {
+            return cronapi.toDate(o);
+          } else {
+            return "'" + o + "'";
+          }
+        }
+      }
+      else {
+        return "undefined";
       }
     }
   })
@@ -755,7 +778,20 @@
             }
             var bindedFilter = filterTemplate.split('{value}').join(value);
             if (typeof value == 'string') {
-              bindedFilter = bindedFilter.split('{value.lower}').join(value.toLowerCase());
+              if (bindedFilter.startsWith('substringof({')) {
+                var values = value.split("'").join("").toLowerCase().trim().split(' ');
+                var fulltextIndexFilter = '';
+                values.forEach(function(v, ix) {
+                  fulltextIndexFilter += bindedFilter.split('{value.lower}').join("'" + v + "'");
+                  if (ix < (values.length - 1)) {
+                    fulltextIndexFilter += ' or ';
+                  }
+                });
+                bindedFilter = fulltextIndexFilter;
+              }
+              else {
+                bindedFilter = bindedFilter.split('{value.lower}').join(value.toLowerCase());
+              }
             } else {
               bindedFilter = bindedFilter.split('{value.lower}').join(value);
             }
@@ -1045,6 +1081,40 @@
         element.append(x);
         element.attr('id' , null);
         $compile(x)(scope);
+      }
+    };
+  })
+  .directive('cronReportViewer', function ($compile) {
+    return {
+      restrict: 'E',
+      replace: true,
+      require: 'ngModel',
+      link: function (scope, element, attrs, ngModelCtrl) {
+
+        function executeReport(attrsOptions) {
+          var config = JSON.parse(attrsOptions);
+          var contextVars = { 'element': element };
+          scope.$eval(config.reportCommand, contextVars);
+        }
+
+        executeReport(attrs.options);
+
+        var filterTimeout = null;
+        scope.$watch(function(){ return attrs.options }, function(value, old){
+          if (value !== old) {
+
+            if (filterTimeout) {
+              clearInterval(filterTimeout);
+              filterTimeout = null;
+            }
+
+            filterTimeout = setTimeout(function() {
+              executeReport(value);
+            }.bind(this), 500);
+          }
+        });
+
+
       }
     };
   })
@@ -1866,7 +1936,7 @@
               });
             }
             
-            if (attrs.ngEdit) { 
+            if (attrs && attrs.ngEdit) { 
               scope.$eval(attrs.ngEdit);
             }
 
@@ -1881,7 +1951,7 @@
             }
             collapseAllExcecptCurrent(this, this.select().next(), this.select());
             
-            if (attrs.ngChange) { 
+            if (attrs && attrs.ngChange) { 
               scope.$eval(attrs.ngChange);
             }
 
@@ -1892,7 +1962,7 @@
             scope.safeApply(cronappDatasource.cancel());
             this.dataSource.transport.options.enableAndSelect(e);
             setTimeout(function() {
-              if (attrs.ngCancel) { 
+              if (attrs && attrs.ngCancel) { 
                 scope.$eval(attrs.ngCancel);
               }
 
@@ -1902,7 +1972,7 @@
           dataBound: function(e) {
             this.dataSource.transport.options.selectActiveInGrid();
             
-            if (attrs.ngDataBound) { 
+            if (attrs && attrs.ngDataBound) { 
               scope.$eval(attrs.ngDataBound);
             }
 
@@ -1910,11 +1980,21 @@
           }
         };
 
-        kendoGridInit.beforeEdit = attrs.ngBeforeEdit ? function(e) {scope.$eval(attrs.ngBeforeEdit);} : undefined;
-        kendoGridInit.dataBinding = attrs.ngDataBinding ? function(e) {scope.$eval(attrs.ngDataBinding);} : undefined;
-        kendoGridInit.save = attrs.ngSave ? function(e) {scope.$eval(attrs.ngSave);} : undefined;
-        kendoGridInit.saveChanges = attrs.ngSaveChanges ? function(e) {scope.$eval(attrs.ngSaveChanges);} : undefined;
-        kendoGridInit.remove = attrs.ngRemove ? function(e) {scope.$eval(attrs.ngRemove);} : undefined;
+        if (attrs && attrs.ngBeforeEdit) {
+          kendoGridInit.beforeEdit =  function(e) {scope.$eval(attrs.ngBeforeEdit);};
+        }
+        if (attrs && attrs.ngDataBinding) {
+          kendoGridInit.dataBinding = function(e) {scope.$eval(attrs.ngDataBinding);};
+        }
+        if (attrs && attrs.ngSave) {
+          kendoGridInit.save = function(e) {scope.$eval(attrs.ngSave);};
+        }
+        if (attrs && attrs.ngSaveChanges) {
+          kendoGridInit.saveChanges = function(e) {scope.$eval(attrs.ngSaveChanges);};
+        }
+        if (attrs && attrs.ngRemove) {
+          kendoGridInit.remove = function(e) {scope.$eval(attrs.ngRemove);};
+        }
 
         return kendoGridInit;
 
@@ -3491,6 +3571,7 @@ app.kendoHelper = {
               function(data) {
                 this.options.enableAndSelect(e);
                 e.success(data);
+                this.options.grid.dataSource._pristineTotal = this.options.grid.dataSource._pristineData.push(data);
               }.bind(this),
               function(data) {
                 this.options.enableAndSelect(e);

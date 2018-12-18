@@ -1366,20 +1366,20 @@
         {
           "name": "xattr-position",
           "type": "btngroup",
-          "target": "style",
+          "target": "class",
           "values": [
             {
-              "key": "magin-right:auto;",
+              "key": "left-block",
               "value": "Standard",
               "icon": "mdi mdi-ray-start"
             },
             {
-              "key": "margin-left:auto; margin-right:auto;",
+              "key": "center-block",
               "value": "Middle",
               "icon": "mdi mdi-ray-vertex"
             },
             {
-              "key": "margin-left:auto;",
+              "key": "right-block",
               "value": "Right",
               "icon": "mdi mdi-ray-end"
             }
@@ -2487,17 +2487,40 @@
       "name": "crn-navbar",
       "text_pt_BR": "Barra de navegação",
       "text_en_US": "Navbar",
-      "forcedGroup": true,
       "class": "adjust-icon mdi mdi-tab",
       "templateURL": "src/main/webapp/plugins/cronapp-framework-js/dist/components/templates/navbar.template.html",
       "properties": {
         "class": {
           "order": 9999
         },
+        "xattr-class": {
+          "order": 998,
+          "fixed": true,
+          "onSave":"javascript:function(){if(arguments[0].indexOf('horizontal') > -1){this.currentObject.parent().find('[ui-view]').removeClass('main-view-vertical').addClass('main-view-horizontal');this.currentObject.parent().find('.main-title').removeClass('hide');}else{this.currentObject.parent().find('[ui-view]').removeClass('main-view-horizontal').addClass('main-view-vertical');this.currentObject.parent().find('.main-title').addClass('hide');} return arguments[0];}",
+          "displayName_pt_BR": "Posição",
+          "displayName_en_US": "Position",
+          "selector": "div"
+        },
         "id": {
           "order": 2
         }
       },
+      "attributesForPreview": [
+        {
+          "name": "xattr-class",
+          "type": "options",
+          "target": "class",
+          "values": [
+            {
+              "key": "crn-navigator-horizontal",
+              "value": "Horizontal"
+            },
+            {
+              "key": "crn-navigator-vertical",
+              "value": "Vertical"
+            }
+          ]
+        }],
       "styles": [
         {
           "selector": "div#{id} .navbar",
@@ -4896,6 +4919,45 @@
               "value": "Text"
             }
           ]
+        }
+      ]
+    },
+    {
+      "name": "crn-cron-report-viewer",
+      "text_pt_BR": "Visualizador de relatório",
+      "text_en_US": "Report viewer",
+      "order": 2,
+      "class": "adjust-icon mdi mdi-nutrition",
+      "designTimeSelector": "cron-report-viewer",
+      "templateURL": "src/main/webapp/plugins/cronapp-framework-js/dist/components/templates/cron-report-viewer.template.html",
+      "designTimeDynamic": true,
+      "designTimeHTMLURL": "src/main/webapp/plugins/cronapp-framework-js/dist/components/templates/cron-report-viewer.designtime.html",
+      "properties": {
+        "class": {
+          "order": 9999
+        },
+        "id": {
+          "order": 1
+        }
+      },
+      "childrenProperties": [
+        {
+          "name": "options",
+          "displayName_pt_BR": "Configurações",
+          "displayName_en_US": "Configuration",
+          "removable": false,
+          "global": "true",
+          "selector": "cron-report-viewer",
+          "type": "text",
+          "order": 1
+        },
+        {
+          "name": "ng-model",
+          "selector": "cron-report-viewer",
+          "onSave": "javascript:function() { var result = arguments[0]; if (result.indexOf('.') == -1 && result.trim().length > 0 ) { result = 'vars.'+result;  }  return result; }",
+          "onDisplay": "javascript:function() { return arguments[0].replace('vars.',''); }",
+          "type": "text",
+          "order": 2
         }
       ]
     }

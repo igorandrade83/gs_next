@@ -853,21 +853,19 @@ body {
     margin: 0 0 2px 0;
     font-size: 14px;
     font-weight: normal;
-    color: #fff;
 }
+
 
 .menu-view .item h3, .login-bg .item h3 {
     margin: 0 0 2px 0;
     font-size: 13px;
     font-weight: normal;
-    color: #fff;
 }
 
 .menu-view .item-icon-left .icon, .login-bg .item-icon-left .icon {
     left: 20px;
-    color: #ffffff;
     border-radius: 100%;
-    border: 1px solid #ffffff;
+    border: 1px solid ;
     width: 35px;
     height: 35px;
     top: 6px;
@@ -1119,4 +1117,20 @@ body {
 .login-bg label.item.item-input {
     padding: 10px;
     border: 1px solid #d7d7d7;
+}
+
+.center-block {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.right-block {
+  display: block;
+  margin-left: auto;
+}
+
+.left-block {
+  display: block;
+  magin-right: auto;
 }
