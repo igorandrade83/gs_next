@@ -322,7 +322,7 @@ window.addEventListener('message', function(event) {
                     };
 
                     scope.$watch(function(){return ngModel.$modelValue}, function(value, old){
-                        if (value !== old) {
+                        if (value !== old || value !== scope.TEXT) {
                             scope.text = ngModel.$modelValue;
                             scope.TEXT = getText();
                             scope.INPUT_MODE = getInputMode(scope.TEXT);
@@ -367,8 +367,9 @@ window.addEventListener('message', function(event) {
                 restrict: 'A',
                 link: function(scope, element, attrs) {
                     var roles = [];
-                    if (scope.session && scope.session.roles) {
-                        roles = scope.session.roles.toLowerCase().split(",");
+                    var user = JSON.parse(localStorage.getItem('_u'))
+                    if (user && user.roles) {
+                        roles = user.roles.toLowerCase().split(",");
                     }
 
                     var perms = parsePermission(attrs.cronappSecurity);

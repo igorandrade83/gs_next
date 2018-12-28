@@ -38,7 +38,7 @@ public class Reserva implements Serializable {
   * @generated
   */
   @ManyToOne
-  @JoinColumn(name="fk_user", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
+  @JoinColumn(name="fk_user", nullable = false, referencedColumnName = "id", insertable=true, updatable=true)
   
   private User user;
 
@@ -46,7 +46,7 @@ public class Reserva implements Serializable {
   * @generated
   */
   @ManyToOne
-  @JoinColumn(name="fk_livro", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
+  @JoinColumn(name="fk_livro", nullable = false, referencedColumnName = "id", insertable=true, updatable=true)
   
   private Livro livro;
 
@@ -54,7 +54,7 @@ public class Reserva implements Serializable {
   * @generated
   */
   @Temporal(TemporalType.DATE)
-  @Column(name = "data_reserva", nullable = true, unique = false, insertable=true, updatable=true)
+  @Column(name = "data_reserva", nullable = false, unique = false, insertable=true, updatable=true)
   @CronapiSearchable
   
   private java.util.Date dataReserva = new Date(System.currentTimeMillis());

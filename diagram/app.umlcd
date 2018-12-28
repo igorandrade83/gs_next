@@ -37,8 +37,8 @@
       ],
       "methods": [],
       "position": {
-        "x": 324,
-        "y": 104
+        "x": 340,
+        "y": 76
       },
       "size": {
         "width": 150.546875,
@@ -450,7 +450,7 @@
         "+ list(): List<Device>"
       ],
       "position": {
-        "x": 508,
+        "x": 574,
         "y": 226
       },
       "size": {
@@ -860,8 +860,8 @@
       ],
       "methods": [],
       "position": {
-        "x": 48,
-        "y": 296
+        "x": 44,
+        "y": 294
       },
       "size": {
         "width": 207.890625,
@@ -913,11 +913,11 @@
           "dbPrecision": "",
           "dbScale": "",
           "dbDefaultValue": "",
-          "label": "User",
+          "label": "Usuário",
           "mask": "",
           "isPrimaryKey": false,
           "isUniqueKey": false,
-          "isNullable": true,
+          "isNullable": false,
           "pkType": "",
           "multitenantContext": "",
           "jsonIgnore": false,
@@ -936,11 +936,11 @@
           "dbPrecision": "",
           "dbScale": "",
           "dbDefaultValue": "",
-          "label": "",
+          "label": "Livro",
           "mask": "",
           "isPrimaryKey": false,
           "isUniqueKey": false,
-          "isNullable": true,
+          "isNullable": false,
           "pkType": "",
           "multitenantContext": "",
           "jsonIgnore": false,
@@ -963,7 +963,7 @@
           "mask": "DD/MM/YYYY",
           "isPrimaryKey": false,
           "isUniqueKey": false,
-          "isNullable": true,
+          "isNullable": false,
           "pkType": "",
           "multitenantContext": "",
           "jsonIgnore": false,
@@ -982,7 +982,7 @@
           "dbPrecision": "",
           "dbScale": "",
           "dbDefaultValue": "",
-          "label": "Data do emprestimo",
+          "label": "Data do empréstimo",
           "mask": "DD/MM/YYYY",
           "isPrimaryKey": false,
           "isUniqueKey": false,
