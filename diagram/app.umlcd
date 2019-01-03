@@ -102,10 +102,10 @@
       "role": "Class",
       "restPath": "",
       "restSecurity": {
-        "get": "Administrators",
         "post": "Administrators",
-        "put": "Administrators",
-        "delete": "Administrators"
+        "get": "Administrators;Alunos",
+        "delete": "Administrators",
+        "put": "Administrators"
       },
       "attrs": {
         "rect": {
@@ -175,7 +175,7 @@
       "tableName": "",
       "runtimeClass": "cronos.widgets.joint.uml.Class",
       "id": "d2e50f97-0b9e-4037-94ba-af64568af247",
-      "z": 10,
+      "z": 21,
       "queries": [],
       "fields": [
         {
@@ -343,10 +343,10 @@
       "role": "Class",
       "restPath": "",
       "restSecurity": {
-        "get": "Administrators",
         "post": "Administrators",
-        "put": "Administrators",
-        "delete": "Administrators"
+        "get": "Administrators;Alunos",
+        "delete": "Administrators",
+        "put": "Administrators"
       },
       "attrs": {
         "rect": {
@@ -678,6 +678,9 @@
           "fill": "#0066FF",
           "font-size": 11,
           "text": "+ list(): List<Device>"
+        },
+        ".": {
+          "display": "normal"
         }
       }
     },
@@ -845,6 +848,9 @@
           "fill": "#0066FF",
           "font-size": 11,
           "text": ""
+        },
+        ".": {
+          "display": "normal"
         }
       }
     },
@@ -878,7 +884,6 @@
       "generateView": "Auto",
       "isRest": "true",
       "multitenantContext": "",
-      "restSecurity": null,
       "restPath": "",
       "id": "37a4de00-9233-480b-9a9b-0a374f2b9774",
       "fields": [
@@ -1040,6 +1045,9 @@
           "fill": "#0066FF",
           "font-size": 11,
           "text": ""
+        },
+        ".": {
+          "display": "normal"
         }
       }
     },
@@ -1083,6 +1091,9 @@
         ".marker-source": {
           "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
           "fill": "#cecece"
+        },
+        ".": {
+          "display": "normal"
         }
       }
     },
@@ -1126,6 +1137,9 @@
         ".marker-source": {
           "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
           "fill": "#cecece"
+        },
+        ".": {
+          "display": "normal"
         }
       }
     }
