@@ -175,7 +175,7 @@
       "tableName": "",
       "runtimeClass": "cronos.widgets.joint.uml.Class",
       "id": "d2e50f97-0b9e-4037-94ba-af64568af247",
-      "z": 21,
+      "z": 23,
       "queries": [],
       "fields": [
         {
@@ -695,8 +695,8 @@
       ],
       "methods": [],
       "position": {
-        "x": 332,
-        "y": 300
+        "x": 344,
+        "y": 282
       },
       "size": {
         "width": 155.328125,
@@ -866,8 +866,8 @@
       ],
       "methods": [],
       "position": {
-        "x": 44,
-        "y": 294
+        "x": 70,
+        "y": 292
       },
       "size": {
         "width": 207.890625,
@@ -1153,6 +1153,11 @@
         "d2e50f97-0b9e-4037-94ba-af64568af247",
         "1df87f56-c5ba-47f5-8e68-82931f49b989"
       ]
+    },
+    {
+      "name": "Class",
+      "id": "7881ce8c-a27f-456c-9541-f45de1e1051e",
+      "cells": []
     },
     {
       "name": "",

@@ -97,12 +97,12 @@
   "Home.view.PreviousPasswordCanNotBeEmpty": "Senha anterior não pode estar vazio.",
   "Home.view.NewPasswordCanNotBeEmpty": "Nova senha não pode estar vazio.",
   "Home.view.ConfirmationPasswordCanNotBeEmpty": "Confirmação não pode estar vazio.",
-  "Biblioteca": "Biblioteca",
-  "Livros": "Livros",
   "Reserva": "Reserva",
-  "MinhasReservas": "Minhas Reservas",
   "Usuario": "Usuário",
   "Livro": "Livro",
   "Nome": "Nome",
-  "Reservas": "Reservas"
+  "Reservas": "Reservas",
+  "Biblioteca": "Biblioteca",
+  "Livros": "Livros",
+  "MinhasReservas": "Minhas Reservas"
 }

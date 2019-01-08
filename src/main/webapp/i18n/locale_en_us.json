@@ -97,12 +97,12 @@
   "Home.view.PreviousPasswordCanNotBeEmpty": "Previous password can not be empty.",
   "Home.view.NewPasswordCanNotBeEmpty": "New password can not be empty.",
   "Home.view.ConfirmationPasswordCanNotBeEmpty": "Confirmation can not be empty.",
-  "Biblioteca": "Library",
-  "Livros": "Books",
   "Reserva": "Reservation",
-  "MinhasReservas": "My Booking",
   "Usuario": "User",
   "Livro": "Book",
   "Nome": "Name",
-  "Reservas": "Booking"
+  "Reservas": "Booking",
+  "Biblioteca": "Biblioteca",
+  "Livros": "Livros",
+  "MinhasReservas": "My Reservations"
 }
