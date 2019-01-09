@@ -26,18 +26,6 @@ public static Var ObterLoginUsuarioLogado() throws Exception {
 }
 
 /**
- */
-// Descreva esta função...
-public static void AdicionarReservaUsuario() throws Exception {
-  new Callable<Var>() {
-
-   public Var call() throws Exception {
-   return Var.VAR_NULL;
-   }
- }.call();
-}
-
-/**
  *
  * @return Var
  */

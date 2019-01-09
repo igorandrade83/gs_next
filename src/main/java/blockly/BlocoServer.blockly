@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><blockly formTarget="" resourceType="JAVA" ruleDescription="BlocoServer" ruleName="BlocoServer" ruleSynchronous="false" ruleTimeout="" ruleType="I">
-  <metadata scale="1" scrollx="488.4" scrolly="-56.89999999999998" target="Anb:u5+^,0vLkL9QIqn5"/>
-  <block colour="#995ba5" id="Anb:u5+^,0vLkL9QIqn5" origintype="procedures_defreturn" output="false" tooltip="Cria uma função que possui um valor de retorno." type="procedures_defreturn" x="-350" y="130">
+  <metadata scale="1" scrollx="509.1999999999998" scrolly="-57.89999999999992" target="Anb:u5+^,0vLkL9QIqn5"/>
+  <block colour="#995ba5" id="Anb:u5+^,0vLkL9QIqn5" origintype="procedures_defreturn" output="false" tooltip="Cria uma função que possui um valor de retorno." type="procedures_defreturn" x="-397" y="158">
     <field name="NAME">ObterLoginUsuarioLogado</field>
     <comment h="80" pinned="false" w="160">BlocoServer</comment>
     <value name="RETURN">
@@ -8,10 +8,6 @@
         <mutation name="{{cronapi.util.Operations.getCurrentUserName}}" return-raw-type="cronapi.Var"/>
       </block>
     </value>
-  </block>
-  <block colour="#fca03b" id="3VDx%E[b*:^;W-pFgMc^" origintype="procedures_defnoreturn" output="false" tooltip="Cria uma função que não tem retorno." type="procedures_defnoreturn" x="-307" y="263">
-    <field name="NAME">AdicionarReservaUsuario</field>
-    <comment h="80" pinned="false" w="160">Descreva esta função...</comment>
   </block>
   <block colour="#fca03b" id="uC:onpwQ!-f8Hk,z@]fG" origintype="procedures_defreturn" output="false" tooltip="Cria uma função que possui um valor de retorno." type="procedures_defreturn" x="-307" y="293">
     <field name="NAME">ObterReservasUsuarioLogado</field>
